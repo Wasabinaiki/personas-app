@@ -31,3 +31,4 @@
     Route::delete('/departamentos/{departamento}', [DepartamentoController::class, 'destroy'])->name('departamentos.destroy');
 
     Route::get('/paises', [PaisController::class, 'index'])->name('paises.index');
+    Route::get('/paises/create', [PaisController::class, 'create'])->name('paises.create');
