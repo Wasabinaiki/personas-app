@@ -36,7 +36,17 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $departamento = new Departamento();
+    $departamento->depa_nomb = $request->depa_nomb;
+    $departamento->pais_codi = $request->pais_codi;
+    $departamento->save();
+
+    $departamentos = DB::table('tb_departamento')
+        ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+        ->select('tb_departamento.*', 'tb_pais.pais_nomb')
+        ->get();
+
+    return view('departamentos.index', ['departamentos' => $departamentos]);
     }
 
     /**

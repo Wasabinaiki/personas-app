@@ -25,3 +25,4 @@
     
     Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamentos.index');
     Route::get('/departamentos/create', [DepartamentoController::class, 'create'])->name('departamentos.create');
+    Route::post('/departamentos', [DepartamentoController::class, 'store'])->name('departamentos.store');
