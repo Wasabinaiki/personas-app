@@ -23,4 +23,5 @@
     Route::delete('/municipios/{municipio}', [MunicipioController::class, 'destroy'])->name('municipios.destroy');
     Route::put('/municipios/{municipio}', [MunicipioController::class, 'update'])->name('municipios.update');
     
-    
+    Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamentos.index');
+    Route::get('/departamentos/create', [DepartamentoController::class, 'create'])->name('departamentos.create');
