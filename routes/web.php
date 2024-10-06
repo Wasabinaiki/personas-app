@@ -33,3 +33,4 @@
     Route::get('/paises', [PaisController::class, 'index'])->name('paises.index');
     Route::get('/paises/create', [PaisController::class, 'create'])->name('paises.create');
     Route::post('/paises', [PaisController::class, 'store'])->name('paises.store');
+    Route::get('/paises/{pais}/edit', [PaisController::class, 'edit'])->name('paises.edit');

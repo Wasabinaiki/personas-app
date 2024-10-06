@@ -53,7 +53,8 @@ class PaisController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pais = Pais::find($id);
+         return view('paises.edit', ['pais' => $pais]);
     }
 
     /**
