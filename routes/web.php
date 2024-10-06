@@ -28,3 +28,4 @@
     Route::post('/departamentos', [DepartamentoController::class, 'store'])->name('departamentos.store');
     Route::get('/departamentos/{departamento}/edit', [DepartamentoController::class, 'edit'])->name('departamentos.edit');
     Route::put('/departamentos/{departamento}', [DepartamentoController::class, 'update'])->name('departamentos.update');
+    Route::delete('/departamentos/{departamento}', [DepartamentoController::class, 'destroy'])->name('departamentos.destroy');
