@@ -62,7 +62,12 @@ class PaisController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->pais_nomb = $request->pais_nomb;
+        $pais->pais_capi = $request->pais_capi;
+        $pais->save();
+    
+        return redirect()->route('paises.index');
     }
 
     /**
@@ -70,6 +75,9 @@ class PaisController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->delete();
+    
+        return redirect()->route('paises.index');
     }
 }

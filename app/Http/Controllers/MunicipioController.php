@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Municipio; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MunicipioController extends Controller
 {
@@ -91,6 +93,9 @@ class MunicipioController extends Controller
     }
 
     /**
+     * 
+     * @param string $id
+     * @return \Illuminate\Http\Response
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)

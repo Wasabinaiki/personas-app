@@ -1,35 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Edit País</title>
+    <title>Listado de Países</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Edit País</h1>
-        <form method="POST" action="{{ route('paises.update', ['pais' => $pais->pais_codi]) }}">
-            @method('PUT')
-            @csrf
-            <div class="mb-3">
-                <label for="pais_codi" class="form-label">Código</label>
-                <input type="text" class="form-control" id="pais_codi" name="pais_codi" disabled="disabled" value="{{ $pais->pais_codi }}">
-            </div>
-            <div class="mb-3">
-                <label for="pais_nomb" class="form-label">Nombre del País</label>
-                <input type="text" class="form-control" id="pais_nomb" name="pais_nomb" value="{{ $pais->pais_nomb }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="pais_capi" class="form-label">Capital</label>
-                <input type="text" class="form-control" id="pais_capi" name="pais_capi" value="{{ $pais->pais_capi }}" required>
-            </div>
-            <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('paises.index') }}" class="btn btn-warning">Cancel</a>
-            </div>
-        </form>
-    </div>
+<div class="container">
+    <h1>Lista de Países</h1>
+    <a href="{{ route('paises.create') }}" class="btn btn-success">Add</a> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($paises as $pais)
+            <tr>
+                <th scope="row">{{ $pais->pais_codi }}</th>
+                <td>{{ $pais->pais_nomb }}</td>
+                <td>{{ $pais->pais_capi }}</td>
+                <td>
+                    <a href="{{ route('paises.edit', ['pais' => $pais->pais_codi]) }}" class="btn btn-info"> Edit </a>
+                    <form action="{{ route('paises.destroy', ['pais' => $pais->pais_codi]) }}" method="POST" style="display: inline-block">
+                        @method('delete')
+                        @csrf
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
