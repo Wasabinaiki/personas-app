@@ -16,3 +16,4 @@
     Route::get('/comunas/{comuna}/edit', [ComunaController::class, 'edit'])->name('comunas.edit');
     Route::delete('/comunas/{comuna}', [ComunaController::class, 'destroy'])->name('comunas.destroy');
     
+    Route::get('/municipios', [MunicipioController::class, 'index'])->name('municipios.index');
